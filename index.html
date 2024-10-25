@@ -8,6 +8,30 @@
     <script defer src="index.js"></script>
 </head>
 <body>
-    
+    <div class="sidebar">
+        <h1>Library</h1>
+        <form>
+            <label for="title">What is the title of the book?</label><br>
+            <input type="text" id="title" name="title"><br>
+            <label for="author">Who is the books author?</label><br>
+            <input type="text" id="author" name="author"><br>
+            <label for="pages">How many pages?</label><br>
+            <input type="text" id="pages" name="pages"><br>
+            <input type="checkbox" name="read" id="read">
+            <label for="read">Have you read this book before?</label><br>
+            <button id="formSubmit">Add Book</button>
+        </form>
+    </div>
+    <div class="libraryTable">
+        <table>
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Pages</th>
+                <th>Status</th>
+                <th>Delete</th>
+            </tr>
+        </table>
+    </div>
 </body>
 </html>
