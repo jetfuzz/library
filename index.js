@@ -1,4 +1,6 @@
 const myLibrary = [];
+const form = document.getElementById('form')
+const formBtn = document.getElementById('formSubmit')
 
 function Book(title, author, pages, read) {
   this.title = title;
@@ -16,11 +18,18 @@ myLibrary.push(theHobbit);
 //add function that can take users input and store the new book objects into myLibrary
 
 function addBookToLibrary() {
-  
+  formBtn.addEventListener('click', function(event) {
+    event.preventDefault();
+
+    const bookTitle = document.getElementById('title').value;
+    const bookAuthor = document.getElementById('author').value;
+    const bookPages = document.getElementById('pages').value;
+    const bookRead = document.getElementById('read').checked ? 'Read' : 'Not read';
+
+    const newBook = new Book(bookTitle, bookAuthor, bookPages, bookRead);
+    myLibrary.push(newBook);
+    form.reset();
+  })
 }
 
 addBookToLibrary();
-
-//write function that loops through the array, and displays each book in a table or card
-
-//add "new book" button that brings up a form allowing users to input details for new book object.
