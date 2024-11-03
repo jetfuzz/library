@@ -7,13 +7,12 @@ function Book(title, author, pages, read) {
   this.author = author;
   this.pages = pages;
   this.read = read;
-  this.info = function() {
-    return [this.title, this.author, this.pages, this.read]
-  }
 }
 
-const theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', '320')
-myLibrary.push(theHobbit);
+const theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', '320', 'Not read')
+const CrimeAndPunishment = new Book('Crime and Punishment', 'Fyodor Dostoevsky', '720', 'Read')
+myLibrary.push(theHobbit, CrimeAndPunishment);
+displayBook(myLibrary)
 
 //add function that can take users input and store the new book objects into myLibrary
 
@@ -28,7 +27,32 @@ function addBookToLibrary() {
 
     const newBook = new Book(bookTitle, bookAuthor, bookPages, bookRead);
     myLibrary.push(newBook);
+    displayBook(myLibrary);
     form.reset();
+  })
+}
+
+//loop through the array
+
+let libraryLength = myLibrary.length;
+for(let i = 0; i < libraryLength; i++) {
+  console.log(myLibrary[i])
+}
+
+//display each book on the page
+
+function displayBook(items) {
+  let table = document.getElementById('libraryTable');
+  items.forEach(item => {
+    let row = table.insertRow();
+    let title = row.insertCell(0);
+    title.innerHTML = item.title;
+    let author = row.insertCell(1);
+    author.innerHTML = item.author;
+    let pages = row.insertCell(2);
+    pages.innerHTML = item.pages;
+    let read = row.insertCell(3);
+    read.innerHTML = item.read;
   })
 }
 
