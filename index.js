@@ -32,17 +32,11 @@ function addBookToLibrary() {
   })
 }
 
-//loop through the array
-
-let libraryLength = myLibrary.length;
-for(let i = 0; i < libraryLength; i++) {
-  console.log(myLibrary[i])
-}
-
 //display each book on the page
 
 function displayBook(items) {
-  let table = document.getElementById('libraryTable');
+  let table = document.getElementById('tableBody');
+  table.innerHTML = ""
   items.forEach(item => {
     let row = table.insertRow();
     let title = row.insertCell(0);
