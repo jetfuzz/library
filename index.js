@@ -35,10 +35,11 @@ function addBookToLibrary() {
 //display each book on the page
 
 function displayBook(items) {
-  let table = document.getElementById('tableBody');
-  table.innerHTML = ""
+  let tableBody = document.getElementById('tableBody');
+  tableBody.innerHTML = "";
+
   items.forEach(item => {
-    let row = table.insertRow();
+    let row = tableBody.insertRow();
     let title = row.insertCell(0);
     title.innerHTML = item.title;
     let author = row.insertCell(1);
@@ -47,7 +48,13 @@ function displayBook(items) {
     pages.innerHTML = item.pages;
     let read = row.insertCell(3);
     read.innerHTML = item.read;
+    let btn = row.insertCell(4);
+    btn.innerHTML = "<button class='deleteBtn'>Delete</button>";
   })
 }
+
+//add a button on each books display to remove the book from the library
+//give each book a data-attribute that corresponds to the index of the library array
+
 
 addBookToLibrary();

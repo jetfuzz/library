@@ -8,31 +8,34 @@
     <script defer src="index.js"></script>
 </head>
 <body>
-    <div class="sidebar">
+    <div class="container">
+        <div class="side-content">
         <h1>Library</h1>
-        <form id="form">
-            <label for="title">What is the title of the book?</label><br>
-            <input type="text" id="title" name="title"><br>
-            <label for="author">Who is the books author?</label><br>
-            <input type="text" id="author" name="author"><br>
-            <label for="pages">How many pages?</label><br>
-            <input type="text" id="pages" name="pages"><br>
-            <input type="checkbox" name="read" id="read">
-            <label for="read">Have you read this book before?</label><br>
-            <button id="formSubmit">Add Book</button>
-        </form>
-    </div>
-    <div>
-        <table id="libraryTable">
-            <tr>
-                <th>Title</th>
-                <th>Author</th>
-                <th>Pages</th>
-                <th>Status</th>
-                <th>Delete</th>
-            </tr>
-            <tbody id="tableBody"></tbody>
-        </table>
+            <form id="form">
+                <label for="title">What is the title of the book?</label><br>
+                <input type="text" id="title" name="title"><br>
+                <label for="author">Who is the books author?</label><br>
+                <input type="text" id="author" name="author"><br>
+                <label for="pages">How many pages?</label><br>
+                <input type="text" id="pages" name="pages"><br>
+                <input type="checkbox" name="read" id="read">
+                <label for="read">Have you already read this book?</label><br>
+                <button id="formSubmit">Add Book</button>
+            </form>
+        </div>
+        <div class="main-content">
+            <table id="libraryTable">
+                <tr>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Pages</th>
+                    <th>Status</th>
+                    <th>Delete</th>
+                </tr>
+                <tbody id="tableBody"></tbody>
+                <pre id="markup"></pre>
+            </table>
+        </div>
     </div>
 </body>
 </html>
