@@ -44,7 +44,7 @@ function displayBook(items) {
 
   items.forEach(item => {
     let row = tableBody.insertRow();
-    row.classList.add(`${item.bookId}`);
+    row.dataset.bookId = item.bookId;
 
     let title = row.insertCell(0);
     title.innerHTML = item.title;
@@ -56,23 +56,40 @@ function displayBook(items) {
     pages.innerHTML = item.pages;
 
     let read = row.insertCell(3);
-    read.innerHTML = item.read;
+    read.innerHTML = `<button>${item.read}</button>`;
+    read.onclick = readBook;
 
     let btn = row.insertCell(4);
-    btn.innerHTML = "<button class='deleteBtn'>Delete</button>";
-    btn.onclick = DeleteBook;
+    btn.innerHTML = "<button>Delete</button>";
+    btn.onclick = deleteBook;
   })
 }
 
 //add a button on each books display to remove the book from the library
-function DeleteBook() {
-  const bookId = this.parentElement.classList[1];
+function deleteBook() {
+  const bookId = this.parentElement.dataset.bookId;
 
   const findBook = myLibrary.findIndex(
     (element) => element.bookId === bookId
   );
+
   const delBook = myLibrary.splice(findBook, 1);
   this.parentElement.remove();
+}
+
+//add a button to each books display to change its read status
+function readBook() {
+  const bookId = this.parentElement.dataset.bookId;
+
+  const book = myLibrary.find((item) => item.bookId === bookId)
+
+  if (book.read === 'Not read') {
+    book.read = 'Read';
+    this.innerHTML = `<button>${book.read}</button>`;
+  } else {
+    book.read = 'Not read';
+    this.innerHTML = `<button>${book.read}</button>`;
+  }
 }
 
 addBookToLibrary();
