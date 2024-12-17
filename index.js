@@ -15,10 +15,11 @@ function Book(title, author, pages, read) {
 Book.id = 0;
 
 //placeholder books for populating table
-const theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', '320', 'Not read')
-const CrimeAndPunishment = new Book('Crime and Punishment', 'Fyodor Dostoevsky', '720', 'Read')
-myLibrary.push(theHobbit, CrimeAndPunishment);
-displayBook(myLibrary)
+const theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', '320', 'Not read');
+const crimeAndPunishment = new Book('Crime and Punishment', 'Fyodor Dostoevsky', '720', 'Read');
+const theSecretHistory = new Book('The Secret History', 'Donna Tartt', '576', 'Read');
+myLibrary.push(theHobbit, crimeAndPunishment, theSecretHistory);
+displayBook(myLibrary);
 
 //add function that can take users input and store the new book objects into myLibrary
 function addBookToLibrary() {
@@ -91,5 +92,18 @@ function readBook() {
     this.innerHTML = `<button>${book.read}</button>`;
   }
 }
+
+//make pages input only accept numbers
+document.getElementById('pages').addEventListener('beforeinput', function (e) {
+  const nextVal =
+  e.target.value.substring(0, e.target.selectionStart) +
+  (e.data ?? '') +
+  e.target.value.substring(e.target.selectionEnd)
+  ;
+  if (!/^\d*$/.test(nextVal)) {
+    e.preventDefault();
+  }
+  return;
+})
 
 addBookToLibrary();

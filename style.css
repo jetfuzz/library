@@ -1,16 +1,10 @@
-/*
-  Josh's Custom CSS Reset
-  https://www.joshwcomeau.com/css/custom-css-reset/
-*/
-
+/* Josh's Custom CSS Reset */
 *, *::before, *::after {
     box-sizing: border-box;
 }
-  
 * {
     margin: 0;
 }
-  
 body {
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
@@ -36,43 +30,136 @@ h1, h2, h3, h4, h5, h6 {
     text-wrap: balance;
 }
 
-#root, #__next {
-    isolation: isolate;
-}
-
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    padding: 12px;
-    margin: 8px;
+    font-family: 'Roboto', sans-serif;
+    background-color: #f7f1f0;
 }
 
 .container {
     display: grid;
-    grid-template-columns: 1fr 4fr;
-    gap: 10px;
+    grid-template-columns: 1fr 3fr;
+    min-height: 100vh;
 }
 
 .side-content {
-    /* border: 1px solid black; */
+    background-color: #f3e7da;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.bookshelf-img {
+    height: 70px;
 }
 
 h1 {
-    text-align: center;
-    padding-bottom: 10px;
-    font-size: 50px;
+    font-size: 2.8rem;
+    font-family: 'EB Garamond', serif;
+    color: #3a3a3a;
+}
+
+form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    color: #333;
+}
+
+label {
+    font-weight: 500;
+}
+
+input[type="text"] {
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    margin-bottom: 22px;
+}
+
+input[type="text"]:focus {
+    outline: none;
+    /* border: 1px solid #ccc; */
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+input[type="checkbox"] {
+    margin-right: 5px;
+    cursor: pointer;
+    width: 14px;
+    height: 14px;
+    /* accent-color: #000000; */
+}
+
+.form-checkbox {
+    margin-bottom: 26px;
+}
+
+#formSubmit {
+    background-color: #181818;
+    padding: 12px;
+    margin-left: 34px;
+    color: #fff;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    max-width: 150px;
+    border-radius: 30px;
+}
+
+#formSubmit:hover {
+    background-color: #333;
+}
+
+#formSubmit:active {
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+    background-color: #333;
 }
 
 .main-content {
-    /* border: 1px solid black; */
-}
+    padding: 20px 60px;
+    overflow-x: auto; 
+} 
 
 table {
-    padding: 20px;
-    margin: 8px;
-    border-collapse: collapse;
+    width: 100%;
+    border-spacing: 0;
 }
 
-th, tr, td {
-    border: 1px solid black;
-    padding: 5px;
+th, td {
+    padding: 22px 16px;
+    text-align: left;
+    font-size: 1rem;
+    color: #333;
+}
+
+th {
+    border-bottom: 1px solid #333;
+    letter-spacing: 0.05rem;
+}
+
+td {
+    color: #333;
+    border-bottom: 2px dotted #ddd;
+}
+
+button {
+    background-color: #f7f1f0;
+    border: 1px solid #333;
+    border-radius: 16px;
+    padding: 6px 14px;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: #dfd8d7;
 }
