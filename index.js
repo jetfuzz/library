@@ -2,13 +2,14 @@ const myLibrary = [];
 const form = document.getElementById('form')
 const formBtn = document.getElementById('formSubmit')
 
-//object constructor
-function Book(title, author, pages, read) {
-  this.bookId = `book${++Book.id}`;
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
+class Book {
+  constructor(title, author, pages, read) {
+    this.bookId = `book${++Book.id}`;
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+  }
 }
 
 //static property
