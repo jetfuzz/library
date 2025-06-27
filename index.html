@@ -14,26 +14,33 @@
 <body>
     <div class="container">
         <div class="side-content">
-            <div class="title">
+            <div class="page-title">
                 <img class="bookshelf-img" src="book-gift-present-svgrepo-com.svg" alt="bookshelf">
                 <h1>Library</h1>
             </div>
-            <form id="form">
+            <form id="form" novalidate>
                 <label for="title">What is the title of the book?</label>
-                <input type="text" id="title" name="title">
+                <input type="text" id="title" name="title" required>
+                <span class="error" id="title-error" aria-live="polite"></span>
+
                 <label for="author">Who is the books author?</label>
-                <input type="text" id="author" name="author">
+                <input type="text" id="author" name="author" required>
+                <span class="error" id="author-error" aria-live="polite"></span>
+
                 <label for="pages">How many pages?</label>
-                <input type="text" id="pages" name="pages">
+                <input type="number" id="pages" name="pages" required min="1" max="10000">
+                <span class="error" id="page-error" aria-live="polite"></span>
+                
                 <div class="form-checkbox">
                     <input type="checkbox" name="read" id="read">
                     <label for="read">I have already read this book</label>
                 </div>
-                <button id="formSubmit">Add Book</button>
+                
+                <button id="form-submit">Add Book</button>
             </form>
         </div>
         <div class="main-content">
-            <table id="libraryTable">
+            <table>
                 <tr>
                     <th>Title</th>
                     <th>Author</th>
@@ -41,8 +48,9 @@
                     <th>Status</th>
                     <th>Delete</th>
                 </tr>
-                <tbody id="tableBody"></tbody>
-                <pre id="markup"></pre>
+                <tbody id="table-body">
+
+                </tbody>
             </table>
         </div>
     </div>

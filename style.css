@@ -30,6 +30,8 @@ h1, h2, h3, h4, h5, h6 {
     text-wrap: balance;
 }
 
+
+/* general page layout */
 body {
     font-family: 'Roboto', sans-serif;
     background-color: #f7f1f0;
@@ -49,7 +51,8 @@ body {
     align-items: center;
 }
 
-.title {
+/* title and form */
+.page-title {
     display: flex;
     align-items: center;
     gap: 15px;
@@ -76,19 +79,19 @@ form {
 
 label {
     font-weight: 500;
+    margin-top: 22px;
 }
 
-input[type="text"] {
+input[type="text"], input[type="number"] {
     padding: 6px;
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 1rem;
-    margin-bottom: 22px;
+    /* margin-bottom: 22px; */
 }
 
-input[type="text"]:focus {
+input[type="text"]:focus, input[type="number"]:focus {
     outline: none;
-    /* border: 1px solid #ccc; */
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
@@ -97,14 +100,26 @@ input[type="checkbox"] {
     cursor: pointer;
     width: 14px;
     height: 14px;
-    /* accent-color: #000000; */
+}
+
+.error {
+  width: 100%;
+  padding: 0;
+  font-size: 80%;
+  color: rgb(228, 0, 0);
+  margin-top: -8px;
+}
+
+.error.active {
+  padding: 0.3em;
 }
 
 .form-checkbox {
     margin-bottom: 26px;
+    margin-top: 22px;
 }
 
-#formSubmit {
+#form-submit {
     background-color: #181818;
     padding: 12px;
     margin-left: 34px;
@@ -116,15 +131,17 @@ input[type="checkbox"] {
     border-radius: 30px;
 }
 
-#formSubmit:hover {
+#form-submit:hover {
     background-color: #333;
 }
 
-#formSubmit:active {
+#form-submit:active {
     box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
     background-color: #333;
 }
 
+
+/* library table */
 .main-content {
     padding: 20px 60px;
     overflow-x: auto; 

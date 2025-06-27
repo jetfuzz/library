@@ -1,6 +1,13 @@
 const myLibrary = [];
-const form = document.getElementById('form')
-const formBtn = document.getElementById('formSubmit')
+const form = document.getElementById('form');
+const formBtn = document.getElementById('form-submit');
+
+const formTitle = document.getElementById('title');
+const titleError = document.querySelector("#title + span.error");
+const formAuthor = document.getElementById('author');
+const authorError = document.querySelector("#author + span.error");
+const formPages = document.getElementById("pages");
+const pageError = document.querySelector("#pages + span.error");
 
 class Book {
   constructor(title, author, pages, read) {
@@ -22,26 +29,30 @@ const theSecretHistory = new Book('The Secret History', 'Donna Tartt', '576', 'R
 myLibrary.push(theHobbit, crimeAndPunishment, theSecretHistory);
 displayBook(myLibrary);
 
-//add function that can take users input and store the new book objects into myLibrary
+//take users input and stores new book objects in myLibrary
 function addBookToLibrary() {
   formBtn.addEventListener('click', function(event) {
     event.preventDefault();
+    if (!form.checkValidity()) {
+      checkFormErrors();
+    } else {
+      checkFormErrors();
+      const bookTitle = document.getElementById('title').value;
+      const bookAuthor = document.getElementById('author').value;
+      const bookPages = document.getElementById('pages').value;
+      const bookRead = document.getElementById('read').checked ? 'Read' : 'Not read';
 
-    const bookTitle = document.getElementById('title').value;
-    const bookAuthor = document.getElementById('author').value;
-    const bookPages = document.getElementById('pages').value;
-    const bookRead = document.getElementById('read').checked ? 'Read' : 'Not read';
-
-    const newBook = new Book(bookTitle, bookAuthor, bookPages, bookRead);
-    myLibrary.push(newBook);
-    displayBook(myLibrary);
-    form.reset();
+      const newBook = new Book(bookTitle, bookAuthor, bookPages, bookRead);
+      myLibrary.push(newBook);
+      displayBook(myLibrary);
+      form.reset();
+    }
   })
 }
 
 //display each book on the page
 function displayBook(items) {
-  let tableBody = document.getElementById('tableBody');
+  let tableBody = document.getElementById('table-body');
   tableBody.innerHTML = "";
 
   items.forEach(item => {
@@ -94,17 +105,31 @@ function readBook() {
   }
 }
 
-//make pages input only accept numbers
-document.getElementById('pages').addEventListener('beforeinput', function (e) {
-  const nextVal =
-  e.target.value.substring(0, e.target.selectionStart) +
-  (e.data ?? '') +
-  e.target.value.substring(e.target.selectionEnd)
-  ;
-  if (!/^\d*$/.test(nextVal)) {
-    e.preventDefault();
-  }
-  return;
-})
+function checkFormErrors() {
+    if (formTitle.validity.valueMissing) {
+      titleError.textContent = "Please enter a book title";
+    } else if (formTitle.validity.valid) {
+      titleError.textContent = ""
+      titleError.className = "error";
+    }
+    if (formAuthor.validity.valueMissing) {
+      authorError.textContent = "Please enter an author name";
+    } else if (formAuthor.validity.valid) {
+      authorError.textContent = ""
+      authorError.className = "error";
+    }
+    if (formPages.validity.valueMissing) {
+      pageError.textContent = "Please enter the number of pages";
+    } else if (formPages.validity.rangeUnderflow) {
+      pageError.textContent = "Page count must be at least 1";
+    } else if (formPages.validity.rangeOverflow) {
+      pageError.textContent = "Page count cannot exceed 10,000";
+    } else if (formPages.validity.valid) {
+      pageError.textContent = ""
+      pageError.className = "error";
+    } else {
+      pageError.textContent = "Please enter a valid number";
+    }
+}
 
 addBookToLibrary();
